@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.dao.UserMapper">
+
+    <!-- 根据登录账号获取实体 199000133王者-->
+     <select id="checkLogin" resultType="Users">
+          select *
+          from sys_user
+          where account=#{account} and password=#{password} and status=0
+     </select>
+
+    <!--增加一个user-->
+    <insert id="addUser" parameterType="Users">
+        insert into sys_user(name,account,password,status)
+        values (#{name},#{account},#{password},#{status});
+    </insert>
+
+    <!--根据id删除一个user-->
+    <delete id="deleteUserById" parameterType="int">
+        delete from sys_user where id=#{id}
+    </delete>
+
+    <!--更新user-->
+    <update id="updateUser" parameterType="Users">
+        update sys_user
+        set name = #{name},account = #{account},password = #{password},status = #{status}
+        where id = #{id}
+    </update>
+
+    <!--根据id查询,返回一个user-->
+    <select id="queryUserById" resultType="Users">
+        select * from sys_user
+        where id = #{id}
+    </select>
+
+    <!--查询全部user-->
+    <select id="queryAllUser" resultType="Users">
+        SELECT * from sys_user
+    </select>
+
+    <!--根据用户名查询，返回一个user-->
+    <select id="queryUserByName" resultType="Users">
+        select * from sys_user
+        where name = #{name}
+    </select>
+
+
+
+</mapper>

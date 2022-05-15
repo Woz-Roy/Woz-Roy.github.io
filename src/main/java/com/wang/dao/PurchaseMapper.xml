@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.dao.PurchaseMapper">
+
+    <!--查询所有进货信息-->
+    <select id="queryAllPurchase" resultType="Purchase">
+        select * from purchase
+    </select>
+
+    <!--增加一个进货信息-->
+    <insert id="addPurchase" parameterType="Purchase">
+        insert into purchase(goods_id,amount,price,purchase_time,supplier_id,purchase_user_id,purchase_user)
+        values (#{goods_id},#{amount},#{price},#{purchase_time},#{supplier_id},#{purchase_user_id},#{purchase_user});
+    </insert>
+
+</mapper>
